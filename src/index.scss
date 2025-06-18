@@ -1,4 +1,4 @@
-@use "sass:color";
+@use 'sass:color';
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&display=swap');
 
 body {
@@ -11,17 +11,21 @@ body {
 	align-items: center;
 	justify-content: center;
 	height: 100vh;
+	padding: 20px;
 }
 
 .App {
-	width: 500px;
+	width: 100%;
+	max-width: 500px;
 	border-radius: 30px;
-	padding: 40px;
+	padding: 30px 20px;
 	background-color: #fff;
 	position: relative;
+	box-sizing: border-box;
 
 	.result {
 		text-align: center;
+		padding: 0 10px;
 
 		button {
 			font-weight: bold;
@@ -111,12 +115,89 @@ body {
 			cursor: pointer;
 			transition: all 0.1s ease-in-out;
 			font-weight: 900;
+			text-align: center;
 
 			&:hover {
 				border: 2px solid rgba(0, 0, 0, 0.3);
 				background-color: #c160ad;
 				color: #fff;
 			}
+		}
+	}
+}
+
+@media (max-width: 480px) {
+	.App {
+		padding: 25px 15px;
+		border-radius: 25px;
+
+		.result {
+			button {
+				font-size: 16px;
+				padding: 10px 20px;
+			}
+
+			h2 {
+				font-size: 1.1rem;
+			}
+
+			img {
+				width: 100px;
+			}
+		}
+
+		h1 {
+			font-size: 1.2rem;
+		}
+
+		ul li {
+			padding: 10px 8px;
+			font-size: 0.85rem;
+		}
+
+		&:before {
+			bottom: -6px;
+			height: 35px;
+		}
+
+		&:after {
+			bottom: -12px;
+			height: 35px;
+		}
+	}
+}
+
+@media (max-width: 360px) {
+	.App {
+		padding: 20px 10px;
+		border-radius: 20px;
+
+		.result {
+			button {
+				font-size: 14px;
+			}
+
+			h2 {
+				font-size: 1rem;
+			}
+
+			img {
+				width: 80px;
+			}
+		}
+
+		h1 {
+			font-size: 1.1rem;
+		}
+
+		ul li {
+			padding: 8px 6px;
+			font-size: 0.8rem;
+		}
+
+		.progress {
+			height: 6px;
+			margin-bottom: 15px;
 		}
 	}
 }
