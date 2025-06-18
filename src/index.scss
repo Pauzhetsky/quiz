@@ -1,20 +1,33 @@
 @use 'sass:color';
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&display=swap');
 
-button, a, input, textarea, select {
-  font-family: inherit; // Наследование шрифта
-  font-size: inherit; // Наследование размера шрифта
-  color: inherit; // Наследование цвета текста
-  background: none; // Сброс фона
-  border: none; // Убираем стандартную рамку
-  outline: none; // Убираем контур при фокусе
-  text-decoration: none; // Убираем подчеркивание
-  padding: 0; // Сбрасываем отступы
-  margin: 0; // Сбрасываем внешние отступы
-  cursor: pointer; // Курсор-указатель для кликабельных элементов
-  -webkit-appearance: none; // Отключаем стандартные стили для WebKit
-  -moz-appearance: none; // Отключаем стандартные стили для Firefox
-  appearance: none; // Отключаем стандартные стили
+/* Глобальный сброс стилей */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	user-select: none; /* Запрет выделения текста */
+	-webkit-tap-highlight-color: transparent; /* Убирает подсветку при тапе на мобильных */
+}
+
+button,
+a,
+input,
+textarea,
+select {
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	background: none;
+	border: none;
+	outline: none;
+	text-decoration: none;
+	padding: 0;
+	margin: 0;
+	cursor: pointer;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
 }
 
 body {
@@ -28,9 +41,9 @@ body {
 	justify-content: center;
 	min-height: 100vh;
 	padding: 20px;
-	box-sizing: border-box;
 }
 
+/* Основные стили приложения */
 .App {
 	width: 100%;
 	max-width: 500px;
@@ -38,9 +51,17 @@ body {
 	padding: 30px 20px;
 	background-color: #fff;
 	position: relative;
-	box-sizing: border-box;
 	margin-bottom: 30px;
 
+	/* Общие стили для текстовых элементов */
+	h1,
+	h2 {
+		margin: 0;
+		padding: 0 10px;
+		text-align: center;
+	}
+
+	/* Стили для результата */
 	.result {
 		text-align: center;
 		padding: 0 10px;
@@ -49,32 +70,20 @@ body {
 
 		button {
 			font-weight: bold;
-			font-family: 'Nunito', sans-serif;
 			border-radius: 15px;
-			border: 0;
 			padding: 15px 30px;
 			font-size: 20px;
 			background-color: color.adjust(#c160ad, $lightness: -3%);
 			color: #fff;
-			margin-top: 20px;
-			cursor: pointer;
+			margin: 20px auto 0;
 			display: block;
 			width: 100%;
 			max-width: 300px;
-			margin-left: auto;
-			margin-right: auto;
-			position: relative;
 			transition: background-color 0.3s ease;
-		}
 
-		button:hover {
-			background-color: #6a5be2;
-			text-decoration: none;
-		}
-
-		h2 {
-			margin-bottom: 0;
-			padding: 0 10px;
+			&:hover {
+				background-color: #6a5be2;
+			}
 		}
 
 		img {
@@ -83,6 +92,7 @@ body {
 		}
 	}
 
+	/* Прогресс-бар */
 	.progress {
 		height: 10px;
 		border-radius: 30px;
@@ -93,16 +103,19 @@ body {
 			height: 100%;
 			border-radius: 30px;
 			width: 80%;
-			background: rgb(18, 231, 48);
-			transition: all 0.3s ease-in-out;
 			background: linear-gradient(
 				90deg,
-				rgba(18, 231, 48, 1) 0%,
-				rgba(0, 212, 255, 1) 100%
+				rgb(229, 6, 6) 0%,
+				rgb(233, 94, 7) 25%,
+				rgb(242, 253, 36) 50%,
+				rgb(54, 229, 6) 75%,
+				rgb(36, 232, 239) 100%
 			);
+			transition: all 0.3s ease-in-out;
 		}
 	}
 
+	/* Декоративные элементы */
 	&:before,
 	&:after {
 		content: '';
@@ -129,11 +142,7 @@ body {
 		z-index: 1;
 	}
 
-	h1 {
-		margin: 0;
-		padding: 0 10px;
-	}
-
+	/* Стили для списка вопросов */
 	ul {
 		list-style: none;
 		padding: 0;
@@ -144,14 +153,13 @@ body {
 			border-radius: 15px;
 			margin-bottom: 10px;
 			cursor: pointer;
-			transition: all 0.1s ease-in-out;
+			transition: all 0.2s ease;
 			font-weight: 900;
 			text-align: center;
-			position: relative;
+			background-color: #fff;
 
-			&:hover,
-			&:focus {
-				border: 2px solid rgba(0, 0, 0, 0.3);
+			&:hover {
+				border-color: rgba(0, 0, 0, 0.3);
 				background-color: #c160ad;
 				color: #fff;
 			}
@@ -159,6 +167,7 @@ body {
 	}
 }
 
+/* Адаптивные стили */
 @media (max-width: 480px) {
 	.App {
 		padding: 25px 15px;
@@ -172,10 +181,6 @@ body {
 				max-width: 100%;
 			}
 
-			h2 {
-				font-size: 1.1rem;
-			}
-
 			img {
 				width: 100px;
 			}
@@ -183,6 +188,10 @@ body {
 
 		h1 {
 			font-size: 1.2rem;
+		}
+
+		h2 {
+			font-size: 1.1rem;
 		}
 
 		ul li {
@@ -216,13 +225,13 @@ body {
 				padding: 12px 20px;
 			}
 
+			img {
+				width: 80px;
+			}
+
 			h2 {
 				font-size: 1rem;
 				line-height: 1.4;
-			}
-
-			img {
-				width: 80px;
 			}
 		}
 
