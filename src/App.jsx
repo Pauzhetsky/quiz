@@ -4,209 +4,282 @@ import javaImage from './java.png'
 
 const questions = [
 	{
-		title: 'Какая коллекция в Java гарантирует порядок элементов?',
-		variants: ['HashSet', 'HashMap', 'ArrayList'],
-		correct: 2,
-	},
-	{
-		title: 'Что такое JPA?',
+		title:
+			'Какое условие может вызвать "странное" поведение в `HashMap` при использованию mutable-ключей, даже если hashCode() переопределён корректно?',
 		variants: [
-			'Java Persistence API',
-			'Java Performance Architecture',
-			'JSON Processing API',
-		],
-		correct: 0,
-	},
-	{
-		title: 'Какое сравнение объектов предпочтительнее в Java?',
-		variants: [
-			'Через оператор ==',
-			'Через метод equals()',
-			'Через метод compare()',
-		],
-		correct: 1,
-	},
-	{
-		title: 'Что такое Maven в Java-экосистеме?',
-		variants: [
-			'Фреймворк для тестирования',
-			'Инструмент сборки и управления зависимостями',
-			'Сервер приложений',
-		],
-		correct: 1,
-	},
-	{
-		title: 'Какая аннотация обозначает контроллер в Spring MVC?',
-		variants: ['@Service', '@Controller', '@Component'],
-		correct: 1,
-	},
-	{
-		title: 'Что такое JUnit?',
-		variants: [
-			'Библиотека для логирования',
-			'Фреймворк для модульного тестирования',
-			'Инструмент для сборки проектов',
-		],
-		correct: 1,
-	},
-	{
-		title: 'Для чего используется ключевое слово finally?',
-		variants: [
-			'Для обязательного выполнения кода',
-			'Для обработки исключений',
-			'Для завершения программы',
-		],
-		correct: 0,
-	},
-	{
-		title: 'Что такое Optional в Java?',
-		variants: [
-			'Контейнер для null-безопасных операций',
-			'Аннотация для опциональных параметров',
-			'Интерфейс для функционального программирования',
-		],
-		correct: 0,
-	},
-	{
-		title: 'Что такое Hibernate в контексте Java?',
-		variants: [
-			'Фреймворк для веб-приложений',
-			'ORM-фреймворк',
-			'Библиотека для работы с потоками',
-		],
-		correct: 1,
-	},
-	{
-		title: 'Какая аннотация используется для маппинга POST-запросов в Spring?',
-		variants: ['@GetMapping', '@PostMapping', '@RequestMapping'],
-		correct: 1,
-	},
-	{
-		title: 'Для чего используется аннотация @Bean в Spring?',
-		variants: [
-			'Для создания бинов',
-			'Для внедрения зависимостей',
-			'Для конфигурации контроллеров',
-		],
-		correct: 0,
-	},
-	{
-		title: 'Что такое Spring Boot?',
-		variants: [
-			'Модуль безопасности Spring',
-			'Фреймворк для микросервисов',
-			'Инструмент для быстрой настройки Spring-приложений',
+			'Изменение поля, не участвующего в equals()/hashCode()',
+			'Коллизия хеш-кодов после изменения ключа',
+			'Нарушение инварианта: !key.equals(new Key) при совпадении bucket-индекса',
 		],
 		correct: 2,
 	},
 	{
-		title: 'Что такое RESTful веб-сервис?',
+		title:
+			'Что произойдёт при вызове `ThreadPoolExecutor` с corePoolSize=5, maxPoolSize=10, queueCapacity=100 после 115 задач?',
 		variants: [
-			'Сервис, использующий только HTTP GET',
-			'Сервис, следующий архитектурным принципам REST',
-			'Сервис с шифрованными запросами',
+			'RejectedExecutionException для 116-й задачи',
+			'Создание 10 потоков и 105 задач в очереди',
+			'Увеличение очереди до 115 задач без новых потоков',
+		],
+		correct: 0,
+	},
+	{
+		title: 'Почему `Arrays.asList(array).remove(0)` выбросит исключение?',
+		variants: [
+			'List фиксированного размера',
+			'Массивы примитивов не поддерживают remove()',
+			'Контракт List запрещает remove() в итераторе без hasNext()',
+		],
+		correct: 0,
+	},
+	{
+		title: 'Как влияет finalize() на время жизни объекта в поколении Old Gen?',
+		variants: [
+			'Объект перемещается в Finalization Queue',
+			'Увеличивает минимум на 2 GC-цикла',
+			'Запрещает перемещение в Survivor Space',
+		],
+		correct: 1,
+	},
+	{
+		title: 'Чем опасен `synchronized` на `Integer.valueOf(1)`?',
+		variants: [
+			'Autoboxing создаёт новый объект',
+			'Integer кэширует значения только до 127',
+			'JIT может оптимизировать монитор',
 		],
 		correct: 1,
 	},
 	{
 		title:
-			'Какой принцип SOLID гласит: "Программные сущности должны быть открыты для расширения, но закрыты для модификации"?',
+			'Почему `((Object) new int[]{1,2}) instanceof List` возвращает false?',
 		variants: [
-			'Принцип единственной ответственности',
-			'Принцип открытости/закрытости',
-			'Принцип инверсии зависимостей',
-		],
-		correct: 1,
-	},
-	{
-		title: 'Что такое Dependency Injection в Spring?',
-		variants: [
-			'Паттерн управления зависимостями',
-			'Способ кэширования данных',
-			'Метод оптимизации запросов',
+			'Массивы не реализуют List',
+			'instanceof проверяет только класс',
+			'Автоупаковка не применяется к массивам',
 		],
 		correct: 0,
 	},
 	{
 		title:
-			'Какая аннотация используется для внедрения зависимостей через конструктор в Spring?',
-		variants: ['@Autowired', '@Inject', '@Resource'],
-		correct: 0,
+			'Какая оптимизация JIT может сломать код `while (!flag)` в другом потоке?',
+		variants: [
+			'Lock Coarsening',
+			'Loop Unrolling',
+			'Hoisting чтения из памяти',
+		],
+		correct: 2,
 	},
 	{
-		title: 'Для чего используется аннотация @Transactional?',
+		title: 'Что нарушает контракт `java.util.concurrent.atomic.LongAdder`?',
 		variants: [
-			'Для определения транзакций',
-			'Для преобразования данных',
-			'Для миграции БД',
+			'Нет гарантий атомарности sum()',
+			'Не поддерживает compareAndSet()',
+			'Может терять обновления при contention',
 		],
 		correct: 0,
 	},
 	{
-		title: 'Что делает ключевое слово volatile в Java?',
+		title: 'Почему `MethodHandle` быстрее Reflection?',
 		variants: [
-			'Обеспечивает атомарность операций',
-			'Гарантирует видимость изменений между потоками',
-			'Запрещает кэширование переменной',
+			'Нет проверок доступа в runtime',
+			'JIT компилирует вызовы напрямую',
+			'Использует intrinsic-оптимизации',
+		],
+		correct: 1,
+	},
+	{
+		title: 'Как `ForkJoinPool` обрабатывает задачи с блокирующими вызовами?',
+		variants: [
+			'Compensated Threading',
+			'Work-Stealing с блокировкой воркеров',
+			'Degrades to ThreadPerTask',
+		],
+		correct: 0,
+	},
+	{
+		title: 'Что нарушает Liskov Substitution в Java Streams?',
+		variants: [
+			'`sorted().distinct()` vs `distinct().sorted()`',
+			'Побочные эффекты в `peek()`',
+			'`flatMap` с stateful-лямбдой',
+		],
+		correct: 2,
+	},
+	{
+		title: 'Почему `var` нельзя использовать для лямбд?',
+		variants: [
+			'Тип лямбды - функциональный интерфейс',
+			'Невозможность вывода типа',
+			'Дезориентация компилятора',
+		],
+		correct: 1,
+	},
+	{
+		title: 'Как `WeakHashMap` обрабатывает коллизии при сборке ключей?',
+		variants: [
+			'Удаляет весь bucket',
+			'Перестраивает цепочку Entry',
+			'Игнорирует до следующего put()',
+		],
+		correct: 1,
+	},
+	{
+		title: 'Чем опасен `Unsafe.allocateInstance()` для `String`?',
+		variants: [
+			'Обход final-полей',
+			'Создание строк без кодировки',
+			'Наружение инварианта `hash != 0`',
+		],
+		correct: 0,
+	},
+	{
+		title:
+			'Почему `Optional.of(null)` кидает NPE, а `Optional.ofNullable(null)` нет?',
+		variants: [
+			'Контракт of() требует non-null',
+			'ofNullable() использует unsafe',
+			'JLS запрещает null в generic-типах',
+		],
+		correct: 0,
+	},
+	{
+		title: 'Какая проблема в `Double.compare(0.0, -0.0)`?',
+		variants: [
+			'Возвращает 0 вместо 1',
+			'Нарушает контракт compare()',
+			'Считает их равными',
+		],
+		correct: 2,
+	},
+	{
+		title: 'Как `ClassLoader` нарушает делегирование для SPI?',
+		variants: [
+			'Thread Context ClassLoader',
+			'Игнорирование parent-first',
+			'Динамическое обновление классов',
+		],
+		correct: 0,
+	},
+	{
+		title:
+			'Почему `Collections.synchronizedList().iterator()` требует ручной синхронизации?',
+		variants: [
+			'Fail-fast итератор',
+			'Отсутствие атомарности next()',
+			'Несинхронизированный hasNext()',
+		],
+		correct: 1,
+	},
+	{
+		title: 'Как `VarHandle` обеспечивает атомарность для `long` в 32-bit JVM?',
+		variants: [
+			'Через разделение на 2 int',
+			'Использует CAS-инструкции CPU',
+			'Только с `@Contended` аннотацией',
+		],
+		correct: 1,
+	},
+	{
+		title: 'Что делает `-XX:+UseCompressedOops` с `Object[]`?',
+		variants: [
+			'Заменяет ссылки на 32-битные',
+			'Упаковывает примитивы в массиве',
+			'Использует off-heap память',
+		],
+		correct: 0,
+	},
+	{
+		title:
+			'Почему `try-with-resources` требует `AutoCloseable`, а не `Closeable`?',
+		variants: [
+			'Поддержка suppressed исключений',
+			'Избегание конфликта с legacy-кодом',
+			'Closeable бросает только IOException',
+		],
+		correct: 2,
+	},
+	{
+		title: 'Как `CompletableFuture.thenCompose()` отличается от `thenApply()`?',
+		variants: [
+			'Разворачивает вложенные Future',
+			'Гарантирует асинхронное выполнение',
+			'Поддерживает бинарные функции',
+		],
+		correct: 0,
+	},
+	{
+		title: 'Чем опасен `Pattern.compile()` в статическом инициализаторе?',
+		variants: [
+			'Рекурсивная загрузка классов',
+			'Блокировка PermGen/Metaspace',
+			'Инициализация NIO Charset',
 		],
 		correct: 1,
 	},
 	{
 		title:
-			'Какое исключение выбрасывается при работе с потоками, если поток был прерван?',
+			'Почему `System.identityHashCode()` может совпадать для разных объектов?',
 		variants: [
-			'InterruptedException',
-			'ThreadException',
-			'ConcurrentModificationException',
+			'31-битное хеширование',
+			'Переполнение адресного пространства',
+			'Коллизии в таблице хешей',
 		],
 		correct: 0,
 	},
 	{
-		title: 'Что такое Deadlock в многопоточности?',
+		title: 'Как `@Contended` предотвращает false sharing?',
 		variants: [
-			'Ошибка при синхронизации потоков',
-			'Взаимная блокировка потоков',
-			'Прерывание работы потока',
+			'Добавление padding-байтов',
+			'Перемещение в off-heap',
+			'Использование CPU-local memory',
+		],
+		correct: 0,
+	},
+	{
+		title: 'Почему `Thread.yield()` не гарантирует паузу?',
+		variants: [
+			'Зависит от планировщика ОС',
+			'Только для кооперативных потоков',
+			'Не влияет на состояние монитора',
+		],
+		correct: 0,
+	},
+	{
+		title: 'Что нарушает `java.util.ServiceLoader` при модульной системе?',
+		variants: [
+			'Требует `uses` в module-info',
+			'Игнорирует `provides`',
+			'Динамическое разрешение модулей',
+		],
+		correct: 0,
+	},
+	{
+		title: 'Как `ByteBuffer.allocateDirect()` влияет на GC?',
+		variants: [
+			'Вызывает full GC для очистки',
+			'Использует phantom references',
+			'Обходит Young Gen',
 		],
 		correct: 1,
 	},
 	{
-		title:
-			'Какой шаблон проектирования используется в Spring для создания бинов?',
-		variants: ['Singleton', 'Factory Method', 'Builder'],
-		correct: 1,
-	},
-	{
-		title: 'Какая функциональность предоставляется Spring Security?',
+		title: 'Почему `Enum.values()` возвращает клон массива?',
 		variants: [
-			'Управление транзакциями',
-			'Аутентификация и авторизация',
-			'Кэширование данных',
+			'Защита от модификации констант',
+			'Thread-safety при итерации',
+			'Избегание утечек памяти',
 		],
-		correct: 1,
+		correct: 0,
 	},
 	{
-		title: 'Что такое Spring Cloud?',
+		title: 'Чем отличается `invokedynamic` от `invokevirtual` для лямбд?',
 		variants: [
-			'Инструмент для облачного хранения',
-			'Набор инструментов для построения облачных приложений',
-			'Фреймворк для работы с Docker',
+			'Отложенная линковка call site',
+			'Использование MethodHandles',
+			'Поддержка default-методов',
 		],
-		correct: 1,
-	},
-	{
-		title: 'Какой паттерн чаще всего используется для работы с БД в Spring?',
-		variants: ['Singleton', 'Repository', 'Builder'],
-		correct: 1,
-	},
-	{
-		title: 'Для чего используется ключевое слово synchronized?',
-		variants: [
-			'Для оптимизации кода',
-			'Для синхронизации потоков',
-			'Для сериализации объектов',
-		],
-		correct: 1,
+		correct: 0,
 	},
 ]
 
