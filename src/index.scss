@@ -30,10 +30,14 @@ body {
 			border: 0;
 			padding: 15px 30px;
 			font-size: 20px;
-			background-color: color.adjust(#ff006e, $lightness: -3%);
+			background-color: color.adjust(#c160ad, $lightness: -3%);
 			color: #fff;
 			margin-top: 20px;
 			cursor: pointer;
+		}
+
+		button:hover {
+			background-color: #6a5be2;
 		}
 
 		h2 {
@@ -110,7 +114,7 @@ body {
 
 			&:hover {
 				border: 2px solid rgba(0, 0, 0, 0.3);
-				background-color: #aa2e91;
+				background-color: #c160ad;
 				color: #fff;
 			}
 		}
