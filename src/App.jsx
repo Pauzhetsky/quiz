@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './index.scss'
+import javaImage from './java.png'
 
 const questions = [
 	{
@@ -212,9 +213,9 @@ const questions = [
 function Result({ correct }) {
 	return (
 		<div className='result'>
-			<img src='./src/java.png' />
+			<img src={javaImage} alt='java logo' />
 			<h2>
-				Вы верно ответили на {correct} из {questions.length} ответов
+				Вы верно ответили на {correct} из {questions.length} вопросов
 			</h2>
 			<a href='/'>
 				<button>Попробовать снова</button>

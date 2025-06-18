@@ -1,6 +1,22 @@
 @use 'sass:color';
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&display=swap');
 
+button, a, input, textarea, select {
+  font-family: inherit; // Наследование шрифта
+  font-size: inherit; // Наследование размера шрифта
+  color: inherit; // Наследование цвета текста
+  background: none; // Сброс фона
+  border: none; // Убираем стандартную рамку
+  outline: none; // Убираем контур при фокусе
+  text-decoration: none; // Убираем подчеркивание
+  padding: 0; // Сбрасываем отступы
+  margin: 0; // Сбрасываем внешние отступы
+  cursor: pointer; // Курсор-указатель для кликабельных элементов
+  -webkit-appearance: none; // Отключаем стандартные стили для WebKit
+  -moz-appearance: none; // Отключаем стандартные стили для Firefox
+  appearance: none; // Отключаем стандартные стили
+}
+
 body {
 	margin: 0;
 	font-family: 'Nunito', sans-serif;
@@ -10,8 +26,9 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 100vh;
+	min-height: 100vh;
 	padding: 20px;
+	box-sizing: border-box;
 }
 
 .App {
@@ -22,15 +39,18 @@ body {
 	background-color: #fff;
 	position: relative;
 	box-sizing: border-box;
+	margin-bottom: 30px;
 
 	.result {
 		text-align: center;
 		padding: 0 10px;
+		position: relative;
+		z-index: 2;
 
 		button {
 			font-weight: bold;
 			font-family: 'Nunito', sans-serif;
-			border-radius: 30px;
+			border-radius: 15px;
 			border: 0;
 			padding: 15px 30px;
 			font-size: 20px;
@@ -38,18 +58,28 @@ body {
 			color: #fff;
 			margin-top: 20px;
 			cursor: pointer;
+			display: block;
+			width: 100%;
+			max-width: 300px;
+			margin-left: auto;
+			margin-right: auto;
+			position: relative;
+			transition: background-color 0.3s ease;
 		}
 
 		button:hover {
 			background-color: #6a5be2;
+			text-decoration: none;
 		}
 
 		h2 {
 			margin-bottom: 0;
+			padding: 0 10px;
 		}
 
 		img {
 			width: 150px;
+			max-width: 100%;
 		}
 	}
 
@@ -77,7 +107,7 @@ body {
 	&:after {
 		content: '';
 		display: block;
-		height: 50px;
+		height: 40px;
 		border-bottom-left-radius: 30px;
 		border-bottom-right-radius: 30px;
 		position: absolute;
@@ -87,20 +117,21 @@ body {
 
 	&:before {
 		width: 95%;
-		bottom: -10px;
+		bottom: -8px;
 		background-color: rgba(255, 255, 255, 0.8);
 		z-index: 0;
 	}
 
 	&:after {
 		width: 90%;
-		bottom: -20px;
+		bottom: -16px;
 		background-color: rgba(255, 255, 255, 0.3);
 		z-index: 1;
 	}
 
 	h1 {
 		margin: 0;
+		padding: 0 10px;
 	}
 
 	ul {
@@ -116,8 +147,10 @@ body {
 			transition: all 0.1s ease-in-out;
 			font-weight: 900;
 			text-align: center;
+			position: relative;
 
-			&:hover {
+			&:hover,
+			&:focus {
 				border: 2px solid rgba(0, 0, 0, 0.3);
 				background-color: #c160ad;
 				color: #fff;
@@ -130,11 +163,13 @@ body {
 	.App {
 		padding: 25px 15px;
 		border-radius: 25px;
+		margin-bottom: 25px;
 
 		.result {
 			button {
 				font-size: 16px;
-				padding: 10px 20px;
+				padding: 12px 25px;
+				max-width: 100%;
 			}
 
 			h2 {
@@ -151,34 +186,39 @@ body {
 		}
 
 		ul li {
-			padding: 10px 8px;
+			padding: 12px 10px;
 			font-size: 0.85rem;
 		}
 
 		&:before {
 			bottom: -6px;
-			height: 35px;
+			height: 30px;
 		}
 
 		&:after {
 			bottom: -12px;
-			height: 35px;
+			height: 30px;
 		}
 	}
 }
 
 @media (max-width: 360px) {
 	.App {
-		padding: 20px 10px;
+		padding: 20px 12px;
 		border-radius: 20px;
+		margin-bottom: 20px;
 
 		.result {
+			padding-bottom: 15px;
+
 			button {
-				font-size: 14px;
+				font-size: 15px;
+				padding: 12px 20px;
 			}
 
 			h2 {
 				font-size: 1rem;
+				line-height: 1.4;
 			}
 
 			img {
@@ -188,16 +228,27 @@ body {
 
 		h1 {
 			font-size: 1.1rem;
+			margin-bottom: 10px;
 		}
 
 		ul li {
-			padding: 8px 6px;
+			padding: 10px 8px;
 			font-size: 0.8rem;
 		}
 
 		.progress {
-			height: 6px;
-			margin-bottom: 15px;
+			height: 8px;
+			margin-bottom: 20px;
+		}
+
+		&:before {
+			bottom: -5px;
+			height: 25px;
+		}
+
+		&:after {
+			bottom: -10px;
+			height: 25px;
 		}
 	}
 }
