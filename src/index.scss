@@ -6,8 +6,8 @@
 *::before,
 *::after {
 	box-sizing: border-box;
-	user-select: none; /* Запрет выделения текста */
-	-webkit-tap-highlight-color: transparent; /* Убирает подсветку при тапе на мобильных */
+	user-select: none;
+	-webkit-tap-highlight-color: transparent;
 }
 
 button,
@@ -43,7 +43,6 @@ body {
 	padding: 20px;
 }
 
-/* Основные стили приложения */
 .App {
 	width: 100%;
 	max-width: 500px;
@@ -53,12 +52,34 @@ body {
 	position: relative;
 	margin-bottom: 30px;
 
-	/* Общие стили для текстовых элементов */
 	h1,
-	h2 {
+	h2,
+	p,
+	li {
+		overflow-wrap: break-word;
+		word-break: break-word;
+		hyphens: auto;
+	}
+
+	/* Стили для заголовка вопроса */
+	h1 {
 		margin: 0;
-		padding: 0 10px;
+		padding: 0 10px 15px;
 		text-align: center;
+		font-size: 1.3rem;
+		line-height: 1.5;
+		max-height: 30vh;
+		overflow-y: auto;
+
+		/* Кастомный скроллбар */
+		&::-webkit-scrollbar {
+			width: 5px;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			background-color: rgba(#6a5be2, 0.5);
+			border-radius: 3px;
+		}
 	}
 
 	/* Стили для результата */
@@ -67,6 +88,13 @@ body {
 		padding: 0 10px;
 		position: relative;
 		z-index: 2;
+
+		h2 {
+			padding: 15px 10px;
+			margin: 20px 0;
+			font-size: 1.3rem;
+			line-height: 1.5;
+		}
 
 		button {
 			font-weight: bold;
@@ -79,10 +107,11 @@ body {
 			display: block;
 			width: 100%;
 			max-width: 300px;
-			transition: background-color 0.3s ease;
+			transition: background-color 0.3s ease, transform 0.2s ease;
 
 			&:hover {
 				background-color: #6a5be2;
+				transform: translateY(-2px);
 			}
 		}
 
@@ -115,7 +144,6 @@ body {
 		}
 	}
 
-	/* Декоративные элементы */
 	&:before,
 	&:after {
 		content: '';
@@ -142,39 +170,56 @@ body {
 		z-index: 1;
 	}
 
-	/* Стили для списка вопросов */
 	ul {
 		list-style: none;
 		padding: 0;
+		margin: 0;
 
 		li {
-			padding: 15px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			min-height: 70px;
+			padding: 15px 10px;
 			border: 2px solid rgba(0, 0, 0, 0.1);
 			border-radius: 15px;
 			margin-bottom: 10px;
 			cursor: pointer;
-			transition: all 0.2s ease;
+			transition: all 0.3s ease, transform 0.2s ease;
 			font-weight: 900;
 			text-align: center;
 			background-color: #fff;
+			line-height: 1.4;
 
 			&:hover {
 				border-color: rgba(0, 0, 0, 0.3);
 				background-color: #c160ad;
 				color: #fff;
+				transform: translateY(-3px);
+				box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 			}
 		}
 	}
 }
 
-/* Адаптивные стили */
 @media (max-width: 480px) {
 	.App {
 		padding: 25px 15px;
 		border-radius: 25px;
 		margin-bottom: 25px;
 
+		h1 {
+			font-size: 1.2rem;
+			max-height: 25vh;
+			padding-bottom: 10px;
+		}
+
 		.result {
+			h2 {
+				font-size: 1.1rem;
+				padding: 10px 5px;
+			}
+
 			button {
 				font-size: 16px;
 				padding: 12px 25px;
@@ -186,17 +231,10 @@ body {
 			}
 		}
 
-		h1 {
-			font-size: 1.2rem;
-		}
-
-		h2 {
-			font-size: 1.1rem;
-		}
-
 		ul li {
-			padding: 12px 10px;
-			font-size: 0.85rem;
+			min-height: 60px;
+			padding: 12px 8px;
+			font-size: 0.9rem;
 		}
 
 		&:before {
@@ -217,8 +255,17 @@ body {
 		border-radius: 20px;
 		margin-bottom: 20px;
 
+		h1 {
+			font-size: 1.1rem;
+			max-height: 20vh;
+		}
+
 		.result {
-			padding-bottom: 15px;
+			h2 {
+				font-size: 1rem;
+				line-height: 1.4;
+				padding: 8px 5px;
+			}
 
 			button {
 				font-size: 15px;
@@ -228,21 +275,12 @@ body {
 			img {
 				width: 80px;
 			}
-
-			h2 {
-				font-size: 1rem;
-				line-height: 1.4;
-			}
-		}
-
-		h1 {
-			font-size: 1.1rem;
-			margin-bottom: 10px;
 		}
 
 		ul li {
-			padding: 10px 8px;
-			font-size: 0.8rem;
+			min-height: 50px;
+			padding: 10px 6px;
+			font-size: 0.85rem;
 		}
 
 		.progress {
